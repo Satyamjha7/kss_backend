@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Subscription = require('../models/Subscription');
 
+router.get('/', (req, res) => {
+    res.send('Subscription route working!');
+});
+
 // POST: Subscribe
 router.post('/', async (req, res) => {
     const { email } = req.body;
