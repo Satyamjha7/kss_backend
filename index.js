@@ -5,10 +5,8 @@ const cors = require('cors');
 const subscriptionRoutes = require('./routes/subscriptionRoutes');
 
 const app = express();
-
-// ✅ Allow specific origins for CORS (for security)
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://yourfrontend.com'], // Add your frontend URL
+    origin: ['http://localhost:3000', 'https://kosisevasadan.org/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 };
@@ -16,7 +14,6 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-// ✅ Validate MONGO_URI
 if (!process.env.MONGO_URI) {
     console.error('❌ MongoDB URI is not defined in .env');
     process.exit(1);
@@ -24,7 +21,6 @@ if (!process.env.MONGO_URI) {
 
 app.use('/api/subscriptions', subscriptionRoutes);
 
-// ✅ Improved MongoDB Connection Handling
 mongoose
     .connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
