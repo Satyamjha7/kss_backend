@@ -6,7 +6,6 @@ router.get('/', (req, res) => {
     res.send('Subscription route working!');
 });
 
-// POST: Subscribe
 router.post('/', async (req, res) => {
     const { email } = req.body;
     try {
