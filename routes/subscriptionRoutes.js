@@ -11,12 +11,12 @@ router.post('/', async (req, res) => {
     try {
         const newSubscription = new Subscription({ email });
         await newSubscription.save();
-        res.status(201).json({ message: 'Subscribed successfully!' });
+        res.status(201).json({ message: 'You have Subscribed successfully!' });
     } catch (error) {
         if (error.code === 11000) {
-            res.status(400).json({ message: 'This email is already subscribed.' });
+            res.status(400).json({ message: 'This email is already subscribed. Please Use another Email' });
         } else {
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: 'Server error! Try Again after sometime' });
         }
     }
 });
