@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     const { email } = req.body;
     try {
-        const newSubscription = new Subscription({ email });
+        const newSubscription = new Subscription({ email }); //email
         await newSubscription.save();
         res.status(201).json({ message: 'You have Subscribed successfully!' });
     } catch (error) {
